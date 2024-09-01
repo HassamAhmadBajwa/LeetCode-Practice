@@ -3,26 +3,25 @@
 
 #include <iostream>
 #include <vector>
-#include <unordered_set>
+#include <unordered_map>
 
 using namespace std;
 bool containDuplicate(vector<int> &arr)
 {
-    unordered_set<int> st;
-    for (int i = 0; i < arr.size(); i++)
+    unordered_map<int, int> mp;
+    for (auto ar : arr)
     {
-        if (st.find(arr[i]) != st.end())
+        mp[ar]++;
+        if (mp[ar] >= 2)
         {
             return true;
         }
-
-        st.insert(arr[i]);
     }
     return false;
 }
 int main()
 {
-    vector<int> arr = {1, 2, 3, 1};
+    vector<int> arr = {1, 2, 3};
     bool result = containDuplicate(arr);
     cout << result;
 }
